@@ -1,10 +1,5 @@
-# Ignore .wav files
 *.wav
-
-# Ignore .pth files
 *.pth
-
-# Ignore .h5 files
 *.h5
-
 *.pkl
+*.flac
