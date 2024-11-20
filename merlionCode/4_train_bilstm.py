@@ -103,7 +103,7 @@ def load_checkpoint(model, optimizer, checkpoint_path, device='cpu'):
         print(f"No checkpoint found at {checkpoint_path}. Starting training from scratch.")
         return 0, 0.0, None, None, 0.0
 
-def train_model(model, train_loader, val_loader, optimizer, criterion, num_epochs, layer_dir_cp, start_epoch=0, patience=5, save_every_n_epochs=3, device='cuda'):
+def train_model(model, train_loader, val_loader, optimizer, criterion, num_epochs, layer_dir_cp, start_epoch=0, patience=10, save_every_n_epochs=2, device='cuda'):
     scaler = GradScaler()
     train_loss_values, train_accuracy_values = [], []
     val_loss_values, val_accuracy_values = [], []
@@ -266,9 +266,7 @@ def plot_roc_curve(y_true, y_scores, layer_dir):
 def main(hdf5_dir, save_dir_plot, save_dir_cp, layer, hidden_dim, batch_size, num_epochs, checkpoint_path=None):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"Using device: {device}")
-    
     print(f"Training model for layer: {layer}")
-    print
     layer_dir_plot = os.path.join(save_dir_plot, layer)
     os.makedirs(layer_dir_plot, exist_ok=True)
     layer_dir_cp = os.path.join(save_dir_cp, layer)
@@ -296,7 +294,7 @@ def main(hdf5_dir, save_dir_plot, save_dir_cp, layer, hidden_dim, batch_size, nu
 
     start_epoch = 0
     if checkpoint_path:
-        start_epoch, _ = load_checkpoint(model, optimizer, checkpoint_path)
+        start_epoch, val_accuracy, val_loss, learning_rate, best_val_accuracy = load_checkpoint(model, optimizer, checkpoint_path)
 
     # Training
     train_loss_values, train_accuracy_values, val_loss_values, val_accuracy_values = train_model(

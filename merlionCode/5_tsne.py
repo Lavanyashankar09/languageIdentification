@@ -10,6 +10,8 @@ from sklearn.manifold import TSNE
 from sklearn.metrics import silhouette_score
 import matplotlib.pyplot as plt
 import random
+import torch.multiprocessing as mp
+mp.set_sharing_strategy('file_system')
 
 class HDF5Dataset(Dataset):
     def __init__(self, hdf5_file_paths, layer):
@@ -75,7 +77,7 @@ def main(hdf5_dir, save_dir_plot, batch_size,layer,  n_clusters=2):
     # # Create a new dataset with only the sampled data
     # dataset = torch.utils.data.Subset(dataset1, sampled_indices)
     
-    data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=False, collate_fn=collate_fn, num_workers=4)
+    data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=False, collate_fn=collate_fn, num_workers=2)
     embeddings = []
     for i, (X, _) in enumerate(data_loader):
         if X.shape[0] != 32:  

@@ -1,0 +1,2 @@
+Average WER (ConvExtracted),Average CER (ConvExtracted),Average Precision (ConvExtracted),Average Recall (ConvExtracted),Average F1 Score (ConvExtracted),Average WER (IntExtracted),Average CER (IntExtracted),Average Precision (IntExtracted),Average Recall (IntExtracted),Average F1 Score (IntExtracted)
+1.3202961328810026,0.845826681319731,0.02599714888618105,0.02622385868546476,0.025987523531471136,,,,,
