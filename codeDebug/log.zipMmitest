@@ -1,0 +1,188 @@
+Number of GPUs: 4
+Free GPUs:  0 1 2 3
+Select device: 0
+cuda device: 0,
+started running
+2024-08-29 17:43:56,428 INFO [pretrained.py:267] {'best_train_loss': inf, 'best_valid_loss': inf, 'best_train_epoch': -1, 'best_valid_epoch': -1, 'batch_idx_train': 0, 'log_interval': 50, 'reset_interval': 200, 'valid_interval': 3000, 'feature_dim': 80, 'subsampling_factor': 4, 'mmi_beam_size': 6, 'den_scale': 1.0, 'ctc_beam_size': 10, 'reduction': 'sum', 'use_double_scores': True, 'warm_step': 2000, 'env_info': {'k2-version': '1.24.4', 'k2-build-type': 'Debug', 'k2-with-cuda': True, 'k2-git-sha1': '415fe1f446fffe1d9e7219b5033966294c0b430c', 'k2-git-date': 'Wed Dec 20 21:38:57 2023', 'lhotse-version': '0.0.0+unknown.version', 'torch-version': '1.10.0', 'torch-cuda-available': True, 'torch-cuda-version': '10.2', 'python-version': '3.8', 'icefall-git-branch': 'master', 'icefall-git-sha1': '5dbeca65-dirty', 'icefall-git-date': 'Fri Jul 19 13:58:15 2024', 'icefall-path': '/export/c09/lavanya/icefall', 'k2-path': '/export/c01/ashah108/k2/k2/python/k2/__init__.py', 'lhotse-path': '/export/c09/lavanya/lhotse/lhotse/__init__.py', 'hostname': 'c01', 'IP address': '127.0.0.1'}, 'frame_shift_ms': 10, 'search_beam': 20, 'output_beam': 8, 'min_active_states': 30, 'max_active_states': 10000, 'checkpoint': './tmp/icefall-asr-librispeech-zipformer-mmi-2022-12-08/exp/pretrained.pt', 'tokens': './tmp/icefall-asr-librispeech-zipformer-mmi-2022-12-08/data/lang_bpe_500/tokens.txt', 'method': '1best', 'sample_rate': 16000, 'lang_dir': PosixPath('data/lang_bpe_500'), 'num_paths': 100, 'nbest_scale': 1.2, 'ngram_lm_scale': 0.1, 'hp_scale': 1.0, 'sound_files': ['/export/c09/lavanya/languageIdentification/test_segments/TTS_P91182TT_VCST_ECxxx_01_AO_48503281_v001_R004_CRR_MERLIon-CCS_segment_0.wav'], 'num_encoder_layers': '2,4,3,2,4', 'feedforward_dims': '1024,1024,2048,2048,1024', 'nhead': '8,8,8,8,8', 'encoder_dims': '384,384,384,384,384', 'attention_dims': '192,192,192,192,192', 'encoder_unmasked_dims': '256,256,256,256,256', 'zipformer_downsampling_factors': '1,2,4,8,2', 'cnn_module_kernels': '31,31,31,31,31', 'blank_id': 0, 'unk_id': 2, 'vocab_size': 500}
+2024-08-29 17:43:56,428 INFO [pretrained.py:283] device: cuda:0
+2024-08-29 17:43:56,429 INFO [pretrained.py:285] Creating model
+2024-08-29 17:43:57,118 INFO [zipformer.py:202] At encoder stack 4, which has downsampling_factor=2, we will combine the outputs of layers 1 and 3, with downsampling_factors=2 and 8.
+2024-08-29 17:43:57,123 INFO [pretrained.py:294] Number of model parameters: 69136519
+2024-08-29 17:44:00,451 INFO [pretrained.py:302] Constructing Fbank computer
+2024-08-29 17:44:00,452 INFO [pretrained.py:313] Reading sound files: ['/export/c09/lavanya/languageIdentification/test_segments/TTS_P91182TT_VCST_ECxxx_01_AO_48503281_v001_R004_CRR_MERLIon-CCS_segment_0.wav']
+2024-08-29 17:44:00,454 INFO [pretrained.py:324] Decoding started
+2024-08-29 17:44:01,201 INFO [lexicon.py:168] Loading pre-compiled data/lang_bpe_500/Linv.pt
+2024-08-29 17:44:03,429 INFO [mmi_graph_compiler.py:62] Loading P from data/lang_bpe_500/P.fst.txt
+2024-08-29 17:44:04,073 INFO [mmi_graph_compiler.py:89] Building ctc_topo (modified=False). max_token_id: 499
+2024-08-29 17:44:04,078 INFO [mmi_graph_compiler.py:96] Building ctc_topo_P
+2024-08-29 17:44:04,093 INFO [mmi_graph_compiler.py:102] ctc_topo_P num_arcs: 1020122
+2024-08-29 17:44:04,206 INFO [zipformer.py:1526] attn_weights_entropy = tensor([1.3356, 1.3178, 0.9390, 1.6479, 1.7093, 1.8022, 1.2173, 1.7997],
+       device='cuda:0'), covar=tensor([0.0059, 0.0144, 0.0012, 0.0035, 0.0049, 0.0061, 0.0252, 0.0025],
+       device='cuda:0'), in_proj_covar=tensor([0.0197, 0.0200, 0.0199, 0.0226, 0.0171, 0.0214, 0.0207, 0.0141],
+       device='cuda:0'), out_proj_covar=tensor([1.2728e-04, 1.2386e-04, 1.2655e-04, 1.4562e-04, 1.0351e-04, 1.3346e-04,
+        1.2970e-04, 8.2449e-05], device='cuda:0')
+./zipformer_mmi/pretrained.py:419: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  [i, 0, feature_lengths[i] // params.subsampling_factor]
+2024-08-29 17:44:04,377 INFO [pretrained.py:477] 
+/export/c09/lavanya/languageIdentification/test_segments/TTS_P91182TT_VCST_ECxxx_01_AO_48503281_v001_R004_CRR_MERLIon-CCS_segment_0.wav:
+YOU CAN BEGIN
+
+
+2024-08-29 17:44:04,377 INFO [pretrained.py:478] Decoding Done
+------------train.py add_model_arguments
+**************** parser is ArgumentParser(prog='pretrained.py', usage=None, description=None, formatter_class=<class 'argparse.ArgumentDefaultsHelpFormatter'>, conflict_handler='error', add_help=True)
+**************** args is Namespace(attention_dims='192,192,192,192,192', checkpoint='./tmp/icefall-asr-librispeech-zipformer-mmi-2022-12-08/exp/pretrained.pt', cnn_module_kernels='31,31,31,31,31', encoder_dims='384,384,384,384,384', encoder_unmasked_dims='256,256,256,256,256', feedforward_dims='1024,1024,2048,2048,1024', hp_scale=1.0, lang_dir=PosixPath('data/lang_bpe_500'), method='1best', nbest_scale=1.2, ngram_lm_scale=0.1, nhead='8,8,8,8,8', num_encoder_layers='2,4,3,2,4', num_paths=100, sample_rate=16000, sound_files=['/export/c09/lavanya/languageIdentification/test_segments/TTS_P91182TT_VCST_ECxxx_01_AO_48503281_v001_R004_CRR_MERLIon-CCS_segment_0.wav'], tokens='./tmp/icefall-asr-librispeech-zipformer-mmi-2022-12-08/data/lang_bpe_500/tokens.txt', zipformer_downsampling_factors='1,2,4,8,2')
+------------train.py get_params
+**************** params is {'best_train_loss': inf, 'best_valid_loss': inf, 'best_train_epoch': -1, 'best_valid_epoch': -1, 'batch_idx_train': 0, 'log_interval': 50, 'reset_interval': 200, 'valid_interval': 3000, 'feature_dim': 80, 'subsampling_factor': 4, 'mmi_beam_size': 6, 'den_scale': 1.0, 'ctc_beam_size': 10, 'reduction': 'sum', 'use_double_scores': True, 'warm_step': 2000, 'env_info': {'k2-version': '1.24.4', 'k2-build-type': 'Debug', 'k2-with-cuda': True, 'k2-git-sha1': '415fe1f446fffe1d9e7219b5033966294c0b430c', 'k2-git-date': 'Wed Dec 20 21:38:57 2023', 'lhotse-version': '0.0.0+unknown.version', 'torch-version': '1.10.0', 'torch-cuda-available': True, 'torch-cuda-version': '10.2', 'python-version': '3.8', 'icefall-git-branch': 'master', 'icefall-git-sha1': '5dbeca65-dirty', 'icefall-git-date': 'Fri Jul 19 13:58:15 2024', 'icefall-path': '/export/c09/lavanya/icefall', 'k2-path': '/export/c01/ashah108/k2/k2/python/k2/__init__.py', 'lhotse-path': '/export/c09/lavanya/lhotse/lhotse/__init__.py', 'hostname': 'c01', 'IP address': '127.0.0.1'}}
+**************** params is after updation {'best_train_loss': inf, 'best_valid_loss': inf, 'best_train_epoch': -1, 'best_valid_epoch': -1, 'batch_idx_train': 0, 'log_interval': 50, 'reset_interval': 200, 'valid_interval': 3000, 'feature_dim': 80, 'subsampling_factor': 4, 'mmi_beam_size': 6, 'den_scale': 1.0, 'ctc_beam_size': 10, 'reduction': 'sum', 'use_double_scores': True, 'warm_step': 2000, 'env_info': {'k2-version': '1.24.4', 'k2-build-type': 'Debug', 'k2-with-cuda': True, 'k2-git-sha1': '415fe1f446fffe1d9e7219b5033966294c0b430c', 'k2-git-date': 'Wed Dec 20 21:38:57 2023', 'lhotse-version': '0.0.0+unknown.version', 'torch-version': '1.10.0', 'torch-cuda-available': True, 'torch-cuda-version': '10.2', 'python-version': '3.8', 'icefall-git-branch': 'master', 'icefall-git-sha1': '5dbeca65-dirty', 'icefall-git-date': 'Fri Jul 19 13:58:15 2024', 'icefall-path': '/export/c09/lavanya/icefall', 'k2-path': '/export/c01/ashah108/k2/k2/python/k2/__init__.py', 'lhotse-path': '/export/c09/lavanya/lhotse/lhotse/__init__.py', 'hostname': 'c01', 'IP address': '127.0.0.1'}, 'frame_shift_ms': 10, 'search_beam': 20, 'output_beam': 8, 'min_active_states': 30, 'max_active_states': 10000, 'checkpoint': './tmp/icefall-asr-librispeech-zipformer-mmi-2022-12-08/exp/pretrained.pt', 'tokens': './tmp/icefall-asr-librispeech-zipformer-mmi-2022-12-08/data/lang_bpe_500/tokens.txt', 'method': '1best', 'sample_rate': 16000, 'lang_dir': PosixPath('data/lang_bpe_500'), 'num_paths': 100, 'nbest_scale': 1.2, 'ngram_lm_scale': 0.1, 'hp_scale': 1.0, 'sound_files': ['/export/c09/lavanya/languageIdentification/test_segments/TTS_P91182TT_VCST_ECxxx_01_AO_48503281_v001_R004_CRR_MERLIon-CCS_segment_0.wav'], 'num_encoder_layers': '2,4,3,2,4', 'feedforward_dims': '1024,1024,2048,2048,1024', 'nhead': '8,8,8,8,8', 'encoder_dims': '384,384,384,384,384', 'attention_dims': '192,192,192,192,192', 'encoder_unmasked_dims': '256,256,256,256,256', 'zipformer_downsampling_factors': '1,2,4,8,2', 'cnn_module_kernels': '31,31,31,31,31'}
+**************** params is after after {'best_train_loss': inf, 'best_valid_loss': inf, 'best_train_epoch': -1, 'best_valid_epoch': -1, 'batch_idx_train': 0, 'log_interval': 50, 'reset_interval': 200, 'valid_interval': 3000, 'feature_dim': 80, 'subsampling_factor': 4, 'mmi_beam_size': 6, 'den_scale': 1.0, 'ctc_beam_size': 10, 'reduction': 'sum', 'use_double_scores': True, 'warm_step': 2000, 'env_info': {'k2-version': '1.24.4', 'k2-build-type': 'Debug', 'k2-with-cuda': True, 'k2-git-sha1': '415fe1f446fffe1d9e7219b5033966294c0b430c', 'k2-git-date': 'Wed Dec 20 21:38:57 2023', 'lhotse-version': '0.0.0+unknown.version', 'torch-version': '1.10.0', 'torch-cuda-available': True, 'torch-cuda-version': '10.2', 'python-version': '3.8', 'icefall-git-branch': 'master', 'icefall-git-sha1': '5dbeca65-dirty', 'icefall-git-date': 'Fri Jul 19 13:58:15 2024', 'icefall-path': '/export/c09/lavanya/icefall', 'k2-path': '/export/c01/ashah108/k2/k2/python/k2/__init__.py', 'lhotse-path': '/export/c09/lavanya/lhotse/lhotse/__init__.py', 'hostname': 'c01', 'IP address': '127.0.0.1'}, 'frame_shift_ms': 10, 'search_beam': 20, 'output_beam': 8, 'min_active_states': 30, 'max_active_states': 10000, 'checkpoint': './tmp/icefall-asr-librispeech-zipformer-mmi-2022-12-08/exp/pretrained.pt', 'tokens': './tmp/icefall-asr-librispeech-zipformer-mmi-2022-12-08/data/lang_bpe_500/tokens.txt', 'method': '1best', 'sample_rate': 16000, 'lang_dir': PosixPath('data/lang_bpe_500'), 'num_paths': 100, 'nbest_scale': 1.2, 'ngram_lm_scale': 0.1, 'hp_scale': 1.0, 'sound_files': ['/export/c09/lavanya/languageIdentification/test_segments/TTS_P91182TT_VCST_ECxxx_01_AO_48503281_v001_R004_CRR_MERLIon-CCS_segment_0.wav'], 'num_encoder_layers': '2,4,3,2,4', 'feedforward_dims': '1024,1024,2048,2048,1024', 'nhead': '8,8,8,8,8', 'encoder_dims': '384,384,384,384,384', 'attention_dims': '192,192,192,192,192', 'encoder_unmasked_dims': '256,256,256,256,256', 'zipformer_downsampling_factors': '1,2,4,8,2', 'cnn_module_kernels': '31,31,31,31,31', 'blank_id': 0, 'unk_id': 2, 'vocab_size': 500}
+*************** this is where the modle is called in train.py and from there to zipformer.py
+------------train.py Encoder started
+ ------&&&&&&&&&&&&& in train.py params of sound_files in get_encoder_model ['/export/c09/lavanya/languageIdentification/test_segments/TTS_P91182TT_VCST_ECxxx_01_AO_48503281_v001_R004_CRR_MERLIon-CCS_segment_0.wav']
+############################### zipformer please ['/export/c09/lavanya/languageIdentification/test_segments/TTS_P91182TT_VCST_ECxxx_01_AO_48503281_v001_R004_CRR_MERLIon-CCS_segment_0.wav']
+------------train.py Encoder Model Created
+ ------&&&&&&&&&&&&& in train.py params of sound_files ['/export/c09/lavanya/languageIdentification/test_segments/TTS_P91182TT_VCST_ECxxx_01_AO_48503281_v001_R004_CRR_MERLIon-CCS_segment_0.wav']
+------------train.py CTC started
+------------train.py CTC Model
+*************** num_param is 69136519
+*************** it read sound files *********************
+*************** its opening a method *********************
+*************** its loading LM *********************
+###############*************** its getting some output of encoder *********************
+features : tensor([[[-14.8007, -12.8087, -12.3195,  ...,  -5.7825,  -5.4704,  -4.9028],
+         [-15.4280, -13.9639, -11.5710,  ...,  -4.0063,  -3.7074,  -4.1896],
+         [-15.2741, -13.4247, -11.4342,  ...,  -5.1495,  -4.1632,  -4.3549],
+         ...,
+         [-15.5300, -13.4436, -12.1189,  ..., -11.3695, -10.6290, -10.2527],
+         [-15.9424, -13.8937, -12.5088,  ..., -10.8872, -10.7602, -11.1208],
+         [-15.9424, -15.4202, -14.7180,  ..., -11.1935, -10.6313, -10.9181]]],
+       device='cuda:0')
+features shape: torch.Size([1, 158, 80])
+features size: 12640
+feature_lengths : tensor([158], device='cuda:0')
+feature_lengths shape: torch.Size([1])
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa for loop started
+Layer Number 1
+Layer Number 2
+Layer Number 3
+Layer Number 4
+Layer Number 5
+len of outputs 5
+the list which is having embeddings of all layers [tensor([[[ 0.0403,  0.0779, -0.0678,  ..., -0.0184,  0.0422, -0.0362]],
+
+        [[ 0.0684,  0.0143, -0.0615,  ...,  0.0753, -0.0295, -0.1025]],
+
+        [[ 0.0366,  0.0655,  0.0375,  ..., -0.0224,  0.0346, -0.1194]],
+
+        ...,
+
+        [[ 0.0499, -0.0059,  0.0028,  ..., -0.0248, -0.0153, -0.0111]],
+
+        [[ 0.0143, -0.0371, -0.0392,  ...,  0.0046,  0.0726, -0.0370]],
+
+        [[ 0.0136,  0.0243,  0.0424,  ..., -0.0208,  0.0673, -0.0139]]],
+       device='cuda:0'), tensor([[[ 0.0817, -0.0243,  0.0633,  ...,  0.0032,  0.1101,  0.0113]],
+
+        [[ 0.0858, -0.0266,  0.0541,  ...,  0.0021,  0.1116,  0.0163]],
+
+        [[ 0.0722, -0.0333,  0.0649,  ..., -0.0162,  0.0997,  0.0213]],
+
+        ...,
+
+        [[ 0.0393,  0.0437, -0.0528,  ...,  0.0306,  0.0137,  0.0320]],
+
+        [[ 0.0437,  0.0413, -0.0618,  ...,  0.0297,  0.0147,  0.0369]],
+
+        [[ 0.0036,  0.0609, -0.0326,  ...,  0.0532,  0.0608,  0.0511]]],
+       device='cuda:0'), tensor([[[ 0.0292,  0.0156,  0.0308,  ..., -0.0275,  0.0451,  0.0152]],
+
+        [[ 0.0333,  0.0149,  0.0241,  ..., -0.0270,  0.0446,  0.0174]],
+
+        [[ 0.0279,  0.0114,  0.0288,  ..., -0.0357,  0.0388,  0.0205]],
+
+        ...,
+
+        [[ 0.0244,  0.0558, -0.0407,  ...,  0.0226, -0.0358,  0.0285]],
+
+        [[ 0.0286,  0.0551, -0.0473,  ...,  0.0232, -0.0366,  0.0306]],
+
+        [[ 0.0119,  0.0628, -0.0348,  ...,  0.0324, -0.0175,  0.0377]]],
+       device='cuda:0'), tensor([[[ 0.0352,  0.0135,  0.0255,  ..., -0.0189,  0.0319,  0.0143]],
+
+        [[ 0.0405,  0.0128,  0.0217,  ..., -0.0186,  0.0078,  0.0113]],
+
+        [[ 0.0351,  0.0080,  0.0219,  ..., -0.0309,  0.0251,  0.0269]],
+
+        ...,
+
+        [[ 0.0166,  0.0534, -0.0398,  ...,  0.0117, -0.0538,  0.0367]],
+
+        [[ 0.0220,  0.0527, -0.0436,  ...,  0.0121, -0.0780,  0.0336]],
+
+        [[ 0.0086,  0.0558, -0.0379,  ...,  0.0124, -0.0433,  0.0520]]],
+       device='cuda:0'), tensor([[[-0.0100,  0.0276, -0.0115,  ..., -0.0263, -0.0044, -0.0078]],
+
+        [[-0.0110,  0.0284, -0.0094,  ..., -0.0258, -0.0044, -0.0090]],
+
+        [[-0.0041,  0.0153,  0.0021,  ..., -0.0345,  0.0002,  0.0017]],
+
+        ...,
+
+        [[-0.0427,  0.1295, -0.0813,  ..., -0.0912,  0.0111,  0.0995]],
+
+        [[-0.0437,  0.1303, -0.0792,  ..., -0.0906,  0.0111,  0.0983]],
+
+        [[-0.0515,  0.1508, -0.0654,  ..., -0.0644,  0.0026,  0.1274]]],
+       device='cuda:0')]
+Embeddings have been saved to /export/c09/lavanya/languageIdentification/embedding/embeddings_20240829-174404.pt
+Shape of output from layer 1: torch.Size([75, 1, 384])
+Shape of output from layer 2: torch.Size([75, 1, 384])
+Shape of output from layer 3: torch.Size([75, 1, 384])
+Shape of output from layer 4: torch.Size([75, 1, 384])
+Shape of output from layer 5: torch.Size([75, 1, 384])
+Shape of final embeddings: torch.Size([75, 1, 384])
+torch.Size([75, 1, 384])
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa for loop ended
+tensor([[[-0.0100,  0.0276, -0.0115,  ..., -0.0263, -0.0044, -0.0078]],
+
+        [[-0.0110,  0.0284, -0.0094,  ..., -0.0258, -0.0044, -0.0090]],
+
+        [[-0.0041,  0.0153,  0.0021,  ..., -0.0345,  0.0002,  0.0017]],
+
+        ...,
+
+        [[-0.0427,  0.1295, -0.0813,  ..., -0.0912,  0.0111,  0.0995]],
+
+        [[-0.0437,  0.1303, -0.0792,  ..., -0.0906,  0.0111,  0.0983]],
+
+        [[-0.0515,  0.1508, -0.0654,  ..., -0.0644,  0.0026,  0.1274]]],
+       device='cuda:0')
+
+############ zipformer.py Main Zipformer Forward Ending #################
+nnet_output : tensor([[[-5.7443, -6.7071, -6.3749,  ..., -5.9158, -6.6751, -5.9618],
+         [-6.0148, -6.6079, -6.2704,  ..., -6.0130, -6.7786, -5.9682],
+         [-6.2251, -6.5656, -6.2737,  ..., -6.1700, -6.8947, -5.9685],
+         ...,
+         [-4.9565, -7.9694, -8.2260,  ..., -7.1958, -6.3983, -6.1328],
+         [-3.9478, -8.0089, -7.7877,  ..., -7.1952, -6.2282, -6.2834],
+         [-3.3746, -7.9162, -7.4495,  ..., -6.8967, -5.9407, -6.4802]]],
+       device='cuda:0')
+nnet_output shape: torch.Size([1, 38, 500])
+nnet_output size: 19000
+encoder_out_lens : tensor([[[-5.7443, -6.7071, -6.3749,  ..., -5.9158, -6.6751, -5.9618],
+         [-6.0148, -6.6079, -6.2704,  ..., -6.0130, -6.7786, -5.9682],
+         [-6.2251, -6.5656, -6.2737,  ..., -6.1700, -6.8947, -5.9685],
+         ...,
+         [-4.9565, -7.9694, -8.2260,  ..., -7.1958, -6.3983, -6.1328],
+         [-3.9478, -8.0089, -7.7877,  ..., -7.1952, -6.2282, -6.2834],
+         [-3.3746, -7.9162, -7.4495,  ..., -6.8967, -5.9407, -6.4802]]],
+       device='cuda:0')
+encoder_out_lens shape: torch.Size([1])
+encoder_out_lens size: 1
+##################*************** its got it *********************
+*************** its getting lattice *********************
+*************** its getting best path *********************
+*************** its got best path *********************
+filename /export/c09/lavanya/languageIdentification/test_segments/TTS_P91182TT_VCST_ECxxx_01_AO_48503281_v001_R004_CRR_MERLIon-CCS_segment_0.wav
+hyp YOU CAN BEGIN
+i think its getting filename and transciption here
